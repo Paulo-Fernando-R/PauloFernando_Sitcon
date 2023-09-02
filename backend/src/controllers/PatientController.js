@@ -1,10 +1,5 @@
 const connection = require("../database/connection");
-
-const responseModel = {
-    sucess: false,
-    data: [],
-    error: [],
-};
+const responseModel = require("./responseModels");
 
 module.exports = {
     async create(req, res) {
@@ -47,5 +42,20 @@ module.exports = {
             res.json(response);
             return res;
         }
+    },
+
+    async getById(req, res) {
+        const response = { ...responseModel };
+
+        try {
+            const [, data] = await connection.query(
+                `SELECT * FROM patients WHERE patients.id = ${req.params.id}`
+            );
+            res.statusCode = 200;
+            response.data = data;
+            response.sucess = true;
+            response.error = {};
+            return res.json(response);
+        } catch (error) {}
     },
 };
