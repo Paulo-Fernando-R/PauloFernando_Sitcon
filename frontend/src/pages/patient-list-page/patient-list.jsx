@@ -5,18 +5,28 @@ import { ListTitle, ListItem } from "./components/list-components";
 import { patientRepository } from "../../repositories/patient-repository";
 import { useEffect, useState, useMemo } from "react";
 import ReactPaginate from "react-paginate";
+import { useNavigate } from "react-router-dom";
 
 function getDateString(date) {
     return new Date(Date.parse(date)).toLocaleDateString();
 }
 
 function List({ currentItens }) {
+    const navigate = useNavigate();
+    function navigateToSolicitation(id) {
+        navigate("/solicitation", { state: { patientId: id } });
+    }
+
     return (
         <>
             {currentItens.length > 0 ? (
                 currentItens.map((e, index) => {
                     return (
-                        <ListItem key={index} row={[e.name, getDateString(e.data_nasc), e.CPF]} />
+                        <ListItem
+                            key={index}
+                            row={[e.name, getDateString(e.data_nasc), e.CPF]}
+                            action={() => navigateToSolicitation(e.id)}
+                        />
                     );
                 })
             ) : (

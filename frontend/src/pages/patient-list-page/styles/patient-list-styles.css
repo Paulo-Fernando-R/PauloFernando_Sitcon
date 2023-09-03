@@ -4,6 +4,8 @@
   min-height: 100dvh;
   overflow-x: hidden;
   background-color: #ffffff;
+  padding-top: 60px;
+  padding-bottom: 30px;
 }
 
 #patient-content {
@@ -12,8 +14,6 @@
   flex-direction: column;
   width: 70%;
   gap: 12px;
-  padding-top: 60px;
-  padding-bottom: 30px;
 }
 #patient-content ul {
   width: 20%;

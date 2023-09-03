@@ -1,0 +1,116 @@
+#solicitation-main-container {
+  width: 100%;
+  max-width: 100%;
+  min-height: 100dvh;
+  overflow-x: hidden;
+  background-color: #ffffff;
+  padding-top: 60px;
+  padding-bottom: 30px;
+}
+
+#solicitation-content {
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  width: 70%;
+  gap: 12px;
+}
+#solicitation-content .back-button {
+  width: 60px;
+  height: 30px;
+  border-radius: 8px;
+  background-color: #ffffff;
+  border: 1px solid #00629b;
+  color: #00629b;
+}
+#solicitation-content form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px 12px;
+}
+#solicitation-content form .form-field:first-child {
+  width: 100%;
+}
+#solicitation-content form .form-field {
+  width: 49.3%;
+}
+#solicitation-content form .form-field .css-fnkwtw {
+  border-radius: 8px;
+}
+#solicitation-content form .form-field:nth-child(4) {
+  display: flex;
+  flex-direction: column;
+}
+#solicitation-content form .form-field:nth-child(4) input {
+  border: 1px solid #c3c3c3;
+  border-radius: 0.2em;
+  padding-top: 0.25em;
+  padding-bottom: 0.25em;
+  padding-right: 0.25em;
+  padding-left: 0.25em;
+  background-color: white;
+  font-size: 1em;
+  height: 30px;
+  border-radius: 8px;
+}
+#solicitation-content form .form-field:nth-child(5) {
+  display: flex;
+  flex-direction: column;
+}
+#solicitation-content form .form-field:nth-child(5) input {
+  border: 1px solid #c3c3c3;
+  border-radius: 0.2em;
+  padding-top: 0.25em;
+  padding-bottom: 0.25em;
+  padding-right: 0.25em;
+  padding-left: 0.25em;
+  background-color: white;
+  font-size: 1em;
+  height: 30px;
+  border-radius: 8px;
+}
+#solicitation-content form #submit-box {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+}
+#solicitation-content form #submit-box button {
+  padding: 6px 24px;
+  border-radius: 8px;
+  border: none;
+  outline: none;
+  background-color: #00629b;
+  color: #ffffff;
+}
+
+#patient-container {
+  display: flex;
+  justify-content: space-between;
+}
+#patient-container ul li {
+  list-style: none;
+  color: #333333;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+#patient-container ul input {
+  width: 200px;
+  height: 30px;
+  border-radius: 6px;
+  border: none;
+  outline: none;
+  background-color: #f0fdfa;
+  box-shadow: 0px 0px 2px 1px #e4e4e4;
+  padding: 0px 10px;
+}
+
+#message-container {
+  width: 100%;
+  height: 50px;
+  background-color: #ffd6b0;
+  border-radius: 8px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
