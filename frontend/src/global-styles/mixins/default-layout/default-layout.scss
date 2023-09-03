@@ -1,0 +1,9 @@
+@use "../../colors.scss" as *;
+
+@mixin defaut-screen {
+    width: 100%;
+    max-width: 100%;
+    min-height: 100dvh;
+    overflow-x: hidden;
+    background-color: $bg-light;
+}

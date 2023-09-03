@@ -1,0 +1,39 @@
+#list-title-box {
+  background-color: #00629b;
+  height: 50px;
+  padding: 0px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+#list-title-box span {
+  width: 100%;
+  color: #ffffff;
+  text-align: center;
+  font-weight: 600;
+}
+
+#list-item-box {
+  background-color: #ffffff;
+  height: 50px;
+  padding: 0px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+#list-item-box span {
+  width: 100%;
+  color: #333333;
+  text-align: center;
+  font-weight: 400;
+  font-size: 12px;
+}
+#list-item-box span button {
+  border: none;
+  outline: none;
+  background-color: #ff8200;
+  color: #ffffff;
+  padding: 8px 12px;
+  border-radius: 8px;
+  font-size: 12px;
+}

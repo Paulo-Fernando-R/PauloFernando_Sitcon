@@ -1,0 +1,44 @@
+@use "../../../../global-styles/colors.scss" as *;
+
+#list-title-box {
+    background-color: $blue;
+    height: 50px;
+    padding: 0px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    span {
+        width: 100%;
+        color: $text-light;
+        text-align: center;
+        font-weight: 600;
+    }
+}
+
+#list-item-box {
+    background-color: $bg-light;
+    height: 50px;
+    padding: 0px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    span {
+        width: 100%;
+        color: $text-dark;
+        text-align: center;
+        font-weight: 400;
+        font-size: 12px;
+
+        button{
+            border: none;
+            outline: none;
+            background-color: $orange;
+            color: $bg-light;
+            padding: 8px 12px;
+            border-radius: 8px;
+            font-size: 12px;
+        }
+    }
+
+    
+}
