@@ -13,6 +13,33 @@
   width: 70%;
   gap: 12px;
   padding-top: 60px;
+  padding-bottom: 30px;
+}
+#patient-content ul {
+  width: 20%;
+  height: 45px;
+  box-shadow: 0px 0px 2px 2px #e4e4e4;
+  border-radius: 12px;
+  display: flex;
+  margin: 0 auto;
+  align-items: center;
+  justify-content: space-evenly;
+  gap: 4px;
+}
+#patient-content ul li:first-child a {
+  cursor: pointer;
+  font-size: 20px;
+}
+#patient-content ul li:last-child a {
+  cursor: pointer;
+  font-size: 20px;
+}
+#patient-content ul li {
+  list-style: none;
+}
+#patient-content ul li a {
+  color: #adadad;
+  font-size: 14px;
 }
 
 #search-box {

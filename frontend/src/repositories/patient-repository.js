@@ -5,7 +5,7 @@ import { BadRequestError, NotFoundError, UnknowmError } from "../exceptions/cust
 async function getAllPatients() {
     try {
         const response = await request.get("/patients");
-        console.log(response);
+        
         if (response.status === 400) {
             throw new BadRequestError("Não foi possível carregar");
         }
