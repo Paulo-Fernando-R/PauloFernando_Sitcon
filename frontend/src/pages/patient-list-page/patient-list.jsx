@@ -3,7 +3,7 @@ import "./styles/patient-list-styles.css";
 import { AiOutlineSearch } from "react-icons/ai";
 import { ListTitle, ListItem } from "./components/list-components";
 import { patientRepository } from "../../repositories/patient-repository";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useMemo } from "react";
 import ReactPaginate from "react-paginate";
 
 function getDateString(date) {
@@ -29,6 +29,8 @@ function List({ currentItens }) {
 export default function PatientList() {
     const [list, setList] = useState([]);
     const [itemOffset, setItemOffset] = useState(0);
+    const [search, setSearch] = useState("");
+    const [searchList, setSearchList] = useState([]);
     const itemsPerPage = 10;
     const endOffset = itemOffset + itemsPerPage;
     //console.log(`Loading items from ${itemOffset} to ${endOffset}`);
@@ -40,10 +42,9 @@ export default function PatientList() {
             const response = await patientRepository.getAll();
 
             if (response.sucess) {
-                setList([ ...response.data]);
+                setList([...response.data]);
             }
         } catch (error) {
-            //colocar toastify
             alert(error.message);
         }
         await patientRepository.getAll();
@@ -55,21 +56,48 @@ export default function PatientList() {
         setItemOffset(newOffset);
     };
 
-    useEffect(() => {
+    function onSearch(text) {
+        setSearch(text);
+
+        if (text.length < 2) {
+            setSearchList([]);
+            return;
+        }
+
+        const temp = [];
+        list.forEach((element) => {
+            if (
+                element.name.toLowerCase().includes(text.toLowerCase()) ||
+                element.CPF.toLowerCase().includes(text.toLowerCase())
+            ) {
+                temp.push(element);
+            }
+        });
+
+        setSearchList(temp);
+    }
+
+    useEffect(() => {}, []);
+
+    useMemo(() => {
         void getData();
     }, []);
-
     return (
         <div id="patient-main-container">
             <div id="patient-content">
                 <div id="search-box">
                     <AiOutlineSearch />
-                    <input type="search" placeholder="Pesquisar" />
+                    <input
+                        type="search"
+                        placeholder="Pesquisar"
+                        value={search}
+                        onChange={(e) => onSearch(e.target.value)}
+                    />
                 </div>
 
                 <div id="list-box">
                     <ListTitle title={["Paciente", "Nascimento", "CPF", "Açoes"]} />
-                    <List currentItens={currentItems} />
+                    <List currentItens={searchList.length < 1 ? currentItems : searchList} />
                 </div>
                 <ReactPaginate
                     breakLabel="..."
