@@ -1,0 +1,18 @@
+#menu-bar {
+  height: 70px;
+  background-color: #00629b;
+  display: flex;
+  padding-right: 30px;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 16px;
+}
+#menu-bar button {
+  width: 170px;
+  height: 30px;
+  background-color: transparent;
+  border-radius: 8px;
+  border: 1px solid #ffffff;
+  color: #ffffff;
+  outline: none;
+}

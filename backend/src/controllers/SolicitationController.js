@@ -6,7 +6,24 @@ module.exports = {
         const response = { ...responseModel };
 
         try {
-            const [, data] = await connection.query(`SELECT * FROM solicitation`);
+            const [, data] =
+                await connection.query(`select solicitation_id, pa.name, pa.CPF, pr.type_id, pr.description, so.solicitation_datetime from solicitation as so
+            inner join solicitation_procedures as sp on sp.solicitation_id = so.id
+            inner join procedures as pr on pr.id = sp.procedure_id 
+            inner join patients as pa on pa.id = so.patient_id;
+            `);
+
+            // const aux = JSON.parse(data);
+            // const temp = [];
+            // const newList = [];
+
+            // aux.forEach((e) => {
+            //     const item = temp.find((el) => el.solicitation_id === e.solicitation_id);
+            //     if(item){
+
+            //     }
+            // })
+            // const 
             res.statusCode = 200;
             response.data = data;
             response.sucess = true;
@@ -60,9 +77,11 @@ module.exports = {
                 return res.json(response);
             }
 
+            const formatedDate = date_time.replace("T", " ").replace(".000Z", "");
+
             const data = await connection.query(
-                `insert into solicitation (patient_id, professional_id) values 
-                (${patient_id}, ${professional_id});`
+                `insert into solicitation (patient_id, professional_id, solicitation_datetime) values 
+                (${patient_id}, ${professional_id}, '${formatedDate}');`
             );
 
             if (!data) {
@@ -91,7 +110,7 @@ module.exports = {
                 response.data = {};
                 response.error = {};
                 response.sucess = true;
-    
+
                 return res.json(response);
             }
 
@@ -119,7 +138,7 @@ module.exports = {
 
             return res.json(response);
         } catch (error) {
-            console.log(error)
+            console.log(error);
             response.error = error.original;
             response.data = {};
             response.sucess = false;

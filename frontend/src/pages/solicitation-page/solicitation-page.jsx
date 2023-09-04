@@ -28,7 +28,7 @@ export default function SolicitationPage() {
 
     async function getFormData() {
         if (solicitation) {
-            setSolicitation(undefined);
+            setSolicitation(-1);
         }
 
         if (procedures.length > 0) {
@@ -97,6 +97,7 @@ export default function SolicitationPage() {
     }
 
     function listFilter(type) {
+
         const listAux = [];
 
         procedureOptions.forEach((e) => {
@@ -113,6 +114,7 @@ export default function SolicitationPage() {
 
     async function handleSubmit(e) {
         e.preventDefault();
+      
 
         if (!professional || !solicitation) {
             return;
@@ -138,6 +140,7 @@ export default function SolicitationPage() {
             console.log(error);
             alert(error.message);
         } finally {
+          
             window.location.reload();
         }
     }
@@ -203,16 +206,30 @@ export default function SolicitationPage() {
 
                     <div className="form-field">
                         <label htmlFor="procedure">Procedimentos*</label>
-                        <Druthers
-                            checkRadioMaxCount={0}
-                            multiple
-                            name={solicitation === "2" ? "Multiple" : "Single"}
-                            onChange={(e) => setProcedures(e.target.value)}
-                            options={procedureFiltered}
-                            selection={procedures}
-                            disabled={!professional || !solicitation ? true : false}
-                            creatable={false}
-                        />
+
+                        {solicitation === "2" ? (
+                            <Druthers
+                                checkRadioMaxCount={0}
+                                multiple
+                                name={"Multiple"}
+                                onChange={(e) => setProcedures(e.target.value)}
+                                options={procedureFiltered}
+                                selection={procedures}
+                                disabled={!professional || !solicitation ? true : false}
+                                creatable={false}
+                            />
+                        ) : (
+                            <Druthers
+                                checkRadioMaxCount={0}
+                                multiple
+                                name={"Single"}
+                                onChange={(e) => setProcedures(e.target.value)}
+                                options={procedureFiltered}
+                                selection={procedures}
+                                disabled={!professional || !solicitation ? true : false}
+                                creatable={false}
+                            />
+                        )}
                     </div>
 
                     <div className="form-field">

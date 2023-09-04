@@ -11,15 +11,19 @@ export function ListTitle({ title }) {
     );
 }
 
-export function ListItem({ row, action }) {
+export function ListItem({ row, action, hasAction }) {
     return (
         <div id="list-item-box">
             {row.map((e, index) => {
                 return <span key={index}>{e}</span>;
             })}
-            <span>
-                <button onClick={() => action()}>Prosseguir</button>
-            </span>
+            {hasAction === false ? (
+                <></>
+            ) : (
+                <span>
+                    <button onClick={() => action()}>Prosseguir</button>
+                </span>
+            )}
         </div>
     );
 }

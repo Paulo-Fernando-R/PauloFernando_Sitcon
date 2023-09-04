@@ -1,0 +1,22 @@
+@use "../../../../global-styles/colors.scss" as *;
+@use "../../../../global-styles/mixins/default-layout/default-layout.scss" as *;
+
+
+#menu-bar{
+    height: 70px;
+    background-color: $blue;
+    display: flex;
+    padding-right: 30px;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 16px;
+
+    button{
+        width: 170px;
+        height: 30px;background-color: transparent;
+        border-radius: 8px;
+        border: 1px solid $bg-light;
+        color: $text-light;
+        outline: none;
+    }
+}

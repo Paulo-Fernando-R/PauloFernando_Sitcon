@@ -2,6 +2,20 @@ import { request } from "../services/rest-client/rest-interceptor";
 
 import { BadRequestError, UnknowmError } from "../exceptions/custom-exceptions";
 
+async function getSolicitations() {
+    try {
+        const response = await request.get("/solicitation");
+        if (response.status === 400) {
+            throw new BadRequestError("Não foi possível carregar");
+        }
+
+        return response.data;
+    } catch (error) {
+        console.log(error);
+        throw new UnknowmError();
+    }
+}
+
 async function createSolicitation(professionalId, patientId, dateTime, procedures) {
     const body = {
         professional_id: professionalId,
@@ -25,4 +39,5 @@ async function createSolicitation(professionalId, patientId, dateTime, procedure
 
 export const solicitationRepository = {
     create: createSolicitation,
+    getAll: getSolicitations,
 };
